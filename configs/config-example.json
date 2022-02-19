@@ -1,0 +1,11 @@
+{
+    "port": 3000,
+    "production": true,
+    "db_config": {
+        "host": "example.com",
+        "port": "5432",
+        "username": "name",
+        "db_name": "password",
+        "ssl_mode": "disable"
+    }
+}
