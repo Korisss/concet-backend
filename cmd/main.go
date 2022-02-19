@@ -63,11 +63,11 @@ func main() {
 	logrus.Print("Concet Backend shutting down...")
 
 	if err := server.Shutdown(context.Background()); err != nil {
-		logrus.Error("error occured on server shutting down: %s", err.Error())
+		logrus.Errorf("error occured on server shutting down: %s", err.Error())
 	}
 
 	if err := db.Close(); err != nil {
-		logrus.Error("error occured on db connection close: %s", err.Error())
+		logrus.Errorf("error occured on db connection close: %s", err.Error())
 	}
 
 	logrus.Info("Server closed properly")
