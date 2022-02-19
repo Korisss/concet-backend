@@ -7,11 +7,11 @@ import (
 	"strconv"
 	"syscall"
 
-	"github.com/Korisss/concet-backend/internal/handler"
 	"github.com/Korisss/concet-backend/internal/repository"
 	"github.com/Korisss/concet-backend/internal/repository/psql"
 	"github.com/Korisss/concet-backend/internal/service"
-	"github.com/Korisss/concet-backend/internal/types"
+	"github.com/Korisss/concet-backend/internal/transport"
+	"github.com/Korisss/concet-backend/internal/transport/handler"
 	configuration "github.com/Korisss/concet-backend/pkg/config"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
@@ -46,7 +46,7 @@ func main() {
 	services := service.NewService(repo)
 	handlers := handler.NewHandler(services)
 
-	server := new(types.Server)
+	server := new(transport.Server)
 
 	go func() {
 		if err := server.Run(strconv.Itoa(config.Port), handlers.InitRoutes()); err != nil {
