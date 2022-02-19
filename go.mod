@@ -3,12 +3,13 @@ module github.com/Korisss/concet-backend
 go 1.17
 
 require (
-	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/gin-gonic/gin v1.7.7
 	github.com/jmoiron/sqlx v1.3.4
 	github.com/joho/godotenv v1.4.0
 	github.com/sirupsen/logrus v1.8.1
 )
+
+require github.com/golang-jwt/jwt/v4 v4.3.0
 
 require (
 	github.com/gin-contrib/sse v0.1.0 // indirect

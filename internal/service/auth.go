@@ -9,7 +9,7 @@ import (
 
 	"github.com/Korisss/concet-backend/internal/repository"
 	"github.com/Korisss/concet-backend/internal/types"
-	"github.com/dgrijalva/jwt-go"
+	"github.com/golang-jwt/jwt/v4"
 )
 
 var salt string = os.Getenv("PASSWORD_SALT")
@@ -18,7 +18,7 @@ var jwtSecret string = os.Getenv("JWT_SECRET")
 const tokenTTL = 8760 * time.Hour
 
 type tokenClaims struct {
-	jwt.StandardClaims
+	jwt.RegisteredClaims
 	UserId int `json:"id"`
 }
 
@@ -63,9 +63,9 @@ func (s *AuthService) GenerateToken(email, password string) (int, string, error)
 	}
 
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, tokenClaims{
-		jwt.StandardClaims{
-			ExpiresAt: time.Now().Add(tokenTTL).Unix(),
-			IssuedAt:  time.Now().Unix(),
+		jwt.RegisteredClaims{
+			ExpiresAt: jwt.NewNumericDate(time.Now().Add(tokenTTL)),
+			IssuedAt:  jwt.NewNumericDate(time.Now()),
 		},
 		user.Id,
 	})
