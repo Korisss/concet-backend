@@ -69,4 +69,6 @@ func main() {
 	if err := db.Close(); err != nil {
 		logrus.Error("error occured on db connection close: %s", err.Error())
 	}
+
+	logrus.Info("Server closed properly")
 }
