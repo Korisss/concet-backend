@@ -4,11 +4,12 @@ import (
 	"crypto/sha256"
 	"errors"
 	"fmt"
+	"os"
+	"time"
+
 	"github.com/Korisss/concet-backend/internal/repository"
 	"github.com/Korisss/concet-backend/internal/types"
 	"github.com/dgrijalva/jwt-go"
-	"os"
-	"time"
 )
 
 var salt string = os.Getenv("PASSWORD_SALT")

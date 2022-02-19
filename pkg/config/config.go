@@ -2,8 +2,9 @@ package config
 
 import (
 	"encoding/json"
-	"github.com/sirupsen/logrus"
 	"os"
+
+	"github.com/sirupsen/logrus"
 )
 
 type Configuration struct {

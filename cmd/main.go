@@ -2,6 +2,11 @@ package main
 
 import (
 	"context"
+	"os"
+	"os/signal"
+	"strconv"
+	"syscall"
+
 	"github.com/Korisss/concet-backend/internal/handler"
 	"github.com/Korisss/concet-backend/internal/repository"
 	"github.com/Korisss/concet-backend/internal/service"
@@ -10,10 +15,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 	"github.com/sirupsen/logrus"
-	"os"
-	"os/signal"
-	"strconv"
-	"syscall"
 )
 
 func main() {

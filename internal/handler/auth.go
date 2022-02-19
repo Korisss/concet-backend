@@ -1,10 +1,11 @@
 package handler
 
 import (
-	"github.com/Korisss/concet-backend/internal/types"
-	"github.com/gin-gonic/gin"
 	"net/http"
 	"net/mail"
+
+	"github.com/Korisss/concet-backend/internal/types"
+	"github.com/gin-gonic/gin"
 )
 
 type loginRequest struct {
