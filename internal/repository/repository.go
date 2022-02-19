@@ -1,6 +1,7 @@
 package repository
 
 import (
+	"github.com/Korisss/concet-backend/internal/repository/psql"
 	"github.com/Korisss/concet-backend/internal/types"
 	"github.com/jmoiron/sqlx"
 )
@@ -16,6 +17,10 @@ type Repository struct {
 
 func NewRepository(db *sqlx.DB) *Repository {
 	return &Repository{
-		Authorization: NewAuthPostgres(db),
+		Authorization: psql.NewAuthPostgres(db),
 	}
+}
+
+func NewPostgresDB(cfg psql.Config) (*sqlx.DB, error) {
+	return psql.NewDB(cfg)
 }

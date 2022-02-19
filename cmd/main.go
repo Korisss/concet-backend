@@ -9,6 +9,7 @@ import (
 
 	"github.com/Korisss/concet-backend/internal/handler"
 	"github.com/Korisss/concet-backend/internal/repository"
+	"github.com/Korisss/concet-backend/internal/repository/psql"
 	"github.com/Korisss/concet-backend/internal/service"
 	"github.com/Korisss/concet-backend/internal/types"
 	configuration "github.com/Korisss/concet-backend/pkg/config"
@@ -29,7 +30,7 @@ func main() {
 		logrus.Error("error when loading .env file")
 	}
 
-	db, err := repository.NewPostgresDB(repository.Config{
+	db, err := repository.NewPostgresDB(psql.Config{
 		Host:     config.DBConfig.Host,
 		Port:     config.DBConfig.Port,
 		Username: config.DBConfig.Username,
