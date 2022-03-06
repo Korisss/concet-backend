@@ -20,3 +20,6 @@
 # Configs
 configs/config.json
 .env
+
+# Build output
+.bin

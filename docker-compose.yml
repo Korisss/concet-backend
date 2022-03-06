@@ -1,0 +1,28 @@
+# TODO: fix "failed to init db: dial tcp 127.0.0.1:5432: connect: connection refused"
+
+version: '3.4'
+
+services:
+  app:
+    image: concet-backend-app
+    container_name: concet-backend-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    depends_on:
+      - postgres
+    volumes:
+      - ./.bin:/root
+      - ./configs:/root/configs
+    env_file:
+      - .env
+
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    environment:
+      - POSTGRES_PASSWORD=password
+    ports:
+      - 5432:5432
