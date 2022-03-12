@@ -1,12 +1,12 @@
 package service
 
 import (
+	"github.com/Korisss/concet-backend/internal/domain"
 	"github.com/Korisss/concet-backend/internal/repository"
-	"github.com/Korisss/concet-backend/internal/types"
 )
 
 type Authorization interface {
-	CreateUser(user types.User) (int, error)
+	CreateUser(user domain.User) (int, error)
 	GenerateToken(email, password string) (int, string, error)
 	ParseToken(token string) (int, error)
 }

@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"net/mail"
 
-	"github.com/Korisss/concet-backend/internal/types"
+	"github.com/Korisss/concet-backend/internal/domain"
 	"github.com/gin-gonic/gin"
 )
 
@@ -57,7 +57,7 @@ func (h *Handler) signIn(ctx *gin.Context) {
 }
 
 func (h *Handler) signUp(ctx *gin.Context) {
-	var req types.User
+	var req domain.User
 
 	if err := ctx.BindJSON(&req); err != nil {
 		newErrorResponse(ctx, http.StatusBadRequest, err.Error())

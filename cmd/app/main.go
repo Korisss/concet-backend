@@ -2,6 +2,10 @@ package main
 
 import (
 	"context"
+	"errors"
+	"github.com/Korisss/concet-backend/internal/transport"
+	"github.com/Korisss/concet-backend/internal/transport/handler"
+	"net/http"
 	"os"
 	"os/signal"
 	"strconv"
@@ -10,8 +14,6 @@ import (
 	"github.com/Korisss/concet-backend/internal/repository"
 	"github.com/Korisss/concet-backend/internal/repository/psql"
 	"github.com/Korisss/concet-backend/internal/service"
-	"github.com/Korisss/concet-backend/internal/transport"
-	"github.com/Korisss/concet-backend/internal/transport/handler"
 	configuration "github.com/Korisss/concet-backend/pkg/config"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
@@ -49,7 +51,7 @@ func main() {
 	server := new(transport.Server)
 
 	go func() {
-		if err := server.Run(strconv.Itoa(config.Port), handlers.InitRoutes()); err != nil {
+		if err := server.Run(strconv.Itoa(config.Port), handlers.InitRoutes()); !errors.Is(err, http.ErrServerClosed) {
 			logrus.Fatalf("Error occured while running http server: %s", err.Error())
 		}
 	}()
