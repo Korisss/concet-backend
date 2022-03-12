@@ -1,4 +1,4 @@
-package types
+package domain
 
 type User struct {
 	Id       int    `json:"-" db:"id"`

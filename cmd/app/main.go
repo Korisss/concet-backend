@@ -2,6 +2,8 @@ package main
 
 import (
 	"context"
+	"errors"
+	"net/http"
 	"os"
 	"os/signal"
 	"strconv"
@@ -49,7 +51,7 @@ func main() {
 	server := new(transport.Server)
 
 	go func() {
-		if err := server.Run(strconv.Itoa(config.Port), handlers.InitRoutes()); err != nil {
+		if err := server.Run(strconv.Itoa(config.Port), handlers.InitRoutes()); !errors.Is(err, http.ErrServerClosed) {
 			logrus.Fatalf("Error occured while running http server: %s", err.Error())
 		}
 	}()

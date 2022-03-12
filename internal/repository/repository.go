@@ -1,14 +1,14 @@
 package repository
 
 import (
+	"github.com/Korisss/concet-backend/internal/domain"
 	"github.com/Korisss/concet-backend/internal/repository/psql"
-	"github.com/Korisss/concet-backend/internal/types"
 	"github.com/jmoiron/sqlx"
 )
 
 type Authorization interface {
-	CreateUser(user types.User) (int, error)
-	GetUser(email, password string) (types.User, error)
+	CreateUser(user domain.User) (int, error)
+	GetUser(email, password string) (domain.User, error)
 }
 
 type Repository struct {
