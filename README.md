@@ -1,6 +1,6 @@
 # Concet
 
-Concet is an open source todo application.
+Concet is an open source note-taking application.
 
 ## Configuration
 
