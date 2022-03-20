@@ -33,3 +33,11 @@ DB_PASSWORD
 PASSWORD_SALT
 JWT_SECRET
 ```
+
+### Development
+
+To start a local postgres database run:
+
+```bash
+sudo docker run -e POSTGRES_PASSWORD=password -p 5432:5432 postgres
+```
