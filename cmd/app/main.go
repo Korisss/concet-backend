@@ -9,12 +9,12 @@ import (
 	"strconv"
 	"syscall"
 
+	configuration "github.com/Korisss/concet-backend/internal/config"
 	"github.com/Korisss/concet-backend/internal/repository"
 	"github.com/Korisss/concet-backend/internal/repository/psql"
 	"github.com/Korisss/concet-backend/internal/service"
 	"github.com/Korisss/concet-backend/internal/transport"
 	"github.com/Korisss/concet-backend/internal/transport/handler"
-	configuration "github.com/Korisss/concet-backend/pkg/config"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 	"github.com/sirupsen/logrus"
@@ -32,14 +32,7 @@ func main() {
 		logrus.Error("error when loading .env file")
 	}
 
-	db, err := repository.NewPostgresDB(psql.Config{
-		Host:     config.DBConfig.Host,
-		Port:     config.DBConfig.Port,
-		Username: config.DBConfig.Username,
-		DBName:   config.DBConfig.DBName,
-		SSLMode:  config.DBConfig.SSLMode,
-		Password: os.Getenv("DB_PASSWORD"),
-	})
+	db, err := repository.NewPostgresDB(psql.LoadConfig())
 	if err != nil {
 		logrus.Fatalf("failed to init db: %s", err.Error())
 	}

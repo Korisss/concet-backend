@@ -10,13 +10,6 @@ import (
 type Configuration struct {
 	Port       int  `json:"port"`
 	Production bool `json:"production"`
-	DBConfig   struct {
-		Host     string `json:"host"`
-		Port     string `json:"port"`
-		Username string `json:"username"`
-		DBName   string `json:"db_name"`
-		SSLMode  string `json:"ssl_mode"`
-	} `json:"db_config"`
 }
 
 func Load(filePath string) *Configuration {

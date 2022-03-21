@@ -21,6 +21,6 @@ func NewRepository(db *sqlx.DB) *Repository {
 	}
 }
 
-func NewPostgresDB(cfg psql.Config) (*sqlx.DB, error) {
+func NewPostgresDB(cfg *psql.Configuration) (*sqlx.DB, error) {
 	return psql.NewDB(cfg)
 }
